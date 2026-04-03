@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { MeshReflectorMaterial, Environment, useTexture } from "@react-three/drei";
 import {
@@ -53,11 +53,11 @@ function Scene() {
         trigger: "main",
         start: "top top",
         end: "bottom bottom",
-        scrub: 1.5, // Slightly lower scrub for smoother response
+        scrub: 1.5,
       }
     });
 
-    // Camera Moves - Dramatic but steady sweeping shots
+    // Camera Moves
     tl.to(camera.position, { x: -3, y: 1, z: 4.5, ease: "sine.inOut", duration: 2 }, 0)
       .to(camera.position, { x: 4, y: -1, z: 6, ease: "sine.inOut", duration: 2 }, 2)
       .to(camera.position, { x: 0, y: 0.5, z: 5, ease: "sine.inOut", duration: 2 }, 4);
@@ -66,8 +66,7 @@ function Scene() {
       .to(lookAtTarget, { x: -0.4, y: -0.6, z: 0, ease: "sine.inOut", duration: 2 }, 2)
       .to(lookAtTarget, { x: 0, y: 0, z: 0, ease: "sine.inOut", duration: 2 }, 4);
 
-    // Simplified & Smoother Flight Paths for all Butterflies
-    // Using sine.inOut for smoother transitions
+    // Flight Paths for Butterflies
     tl.to(bStates.b1, { x: 8, y: -1, z: 2, ry: -3, duration: 2, ease: "sine.inOut" }, 0)
       .to(bStates.b1, { x: -10, y: 3, z: 4, ry: 2, duration: 2, ease: "sine.inOut" }, 2)
       .to(bStates.b1, { x: 0, y: 0, z: 0, ry: 0, duration: 1 }, 4);
@@ -102,7 +101,6 @@ function Scene() {
     const updateScene = () => {
       camera.lookAt(lookAtTarget);
       
-      // Update all 10 butterflies with simplified position and rotation
       ["b1", "b2", "b3", "b4", "b5", "w1", "w2", "w3", "w4", "w5"].forEach(name => {
         const obj = scene.getObjectByName(name);
         if (obj) {
@@ -141,7 +139,6 @@ function Scene() {
       <Suspense fallback={<Loader />}>
         <Model position={[0, -1, 0]} scale={1.4} />
         
-        {/* All 10 Butterflies in cohesive Blue Glow with increased scale */}
         <Butterfly name="b1" position={[-6, 2, -2]} scale={0.15 * 2} glowColor="#4CC6F1" glowIntensity={8} />
         <Butterfly name="b2" position={[6, -1, -3]} scale={0.12 * 2} glowColor="#4CC6F1" glowIntensity={8} />
         <Butterfly name="b3" position={[-4, -3, -1]} scale={0.1 * 2} glowColor="#4CC6F1" glowIntensity={8} />
@@ -183,7 +180,7 @@ function Scene() {
   );
 }
 
-export function ModelViewer() {
+export default function ModelViewerClient() {
   return (
     <div className="relative h-full w-full">
       <Canvas 

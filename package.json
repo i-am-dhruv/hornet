@@ -3,12 +3,15 @@
   "name": "nextn",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev -p 9002",
     "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "setup": "npm install --legacy-peer-deps",
+    "dev:auto": "npm install --legacy-peer-deps && npm run dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",

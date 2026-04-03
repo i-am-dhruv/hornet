@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ModelViewer } from "@/components/ModelViewer";
+import { ModelViewer } from "@/components/ModelViewerWrapper";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { AutoScrollButton } from "@/components/AutoScrollButton";

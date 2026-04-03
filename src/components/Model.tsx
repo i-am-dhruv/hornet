@@ -1,17 +1,23 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { MathUtils } from "three";
 import type { Group } from "three";
 
-useGLTF.preload("https://files.catbox.moe/o60blw.glb");
+const MODEL_URL = "https://files.catbox.moe/o60blw.glb";
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
   const groupRef = useRef<Group>(null!);
-  const { scene } = useGLTF("https://files.catbox.moe/o60blw.glb");
+  const { scene } = useGLTF(MODEL_URL);
   const [hovered, setHover] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      useGLTF.preload(MODEL_URL);
+    }
+  }, []);
 
   useFrame((_state, delta) => {
     if (groupRef.current) {
