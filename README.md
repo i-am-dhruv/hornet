@@ -83,7 +83,6 @@ The app will be available at **http://localhost:9002**
 - **Radix UI** - Headless UI components
 - **Three.js** - 3D graphics
 - **React Three Fiber** - Three.js + React
-- **Firebase** - Backend & Authentication
 - **GSAP** - Animation library
 - **React Hook Form** - Form management
 - **Zod** - Data validation
@@ -104,21 +103,6 @@ hornet/
 ├── .devcontainer/       # Dev container setup
 ├── setup.sh            # Quick setup script
 └── package.json        # Dependencies
-```
-
----
-
-## 🔧 Environment Setup
-
-For Firebase and other services, create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_domain
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_bucket
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
 
 ---
